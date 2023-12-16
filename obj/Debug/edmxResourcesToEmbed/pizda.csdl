@@ -1,0 +1,99 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="nastybabeModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="categories">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="category" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="tovar" Relationship="Self.FK_tovar_categories" FromRole="categories" ToRole="tovar" />
+  </EntityType>
+  <EntityType Name="nastya">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="surname" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="mname" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="pass" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="rolee" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="roles" Relationship="Self.FK_nastya_roles" FromRole="nastya" ToRole="roles" />
+  </EntityType>
+  <EntityType Name="roles">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="rolee" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="nastya" Relationship="Self.FK_nastya_roles" FromRole="roles" ToRole="nastya" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="principal_id" Type="Int32" Nullable="false" />
+    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="version" Type="Int32" />
+    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="tovar">
+    <Key>
+      <PropertyRef Name="art" />
+    </Key>
+    <Property Name="art" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="name" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="ed_ism" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="price" Type="Int32" Nullable="false" />
+    <Property Name="max_sale" Type="Double" Nullable="false" />
+    <Property Name="proisvod" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="post" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="kat_tov" Type="Int32" Nullable="false" />
+    <Property Name="sale" Type="Double" Nullable="false" />
+    <Property Name="colvo" Type="Int32" Nullable="false" />
+    <Property Name="opis" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="img" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="categories" Relationship="Self.FK_tovar_categories" FromRole="tovar" ToRole="categories" />
+  </EntityType>
+  <Association Name="FK_tovar_categories">
+    <End Role="categories" Type="Self.categories" Multiplicity="1" />
+    <End Role="tovar" Type="Self.tovar" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="categories">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="tovar">
+        <PropertyRef Name="kat_tov" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_nastya_roles">
+    <End Role="roles" Type="Self.roles" Multiplicity="1" />
+    <End Role="nastya" Type="Self.nastya" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="roles">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="nastya">
+        <PropertyRef Name="rolee" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="nastybabeEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="categories" EntityType="Self.categories" />
+    <EntitySet Name="nastya" EntityType="Self.nastya" />
+    <EntitySet Name="roles" EntityType="Self.roles" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
+    <EntitySet Name="tovar" EntityType="Self.tovar" />
+    <AssociationSet Name="FK_tovar_categories" Association="Self.FK_tovar_categories">
+      <End Role="categories" EntitySet="categories" />
+      <End Role="tovar" EntitySet="tovar" />
+    </AssociationSet>
+    <AssociationSet Name="FK_nastya_roles" Association="Self.FK_nastya_roles">
+      <End Role="roles" EntitySet="roles" />
+      <End Role="nastya" EntitySet="nastya" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

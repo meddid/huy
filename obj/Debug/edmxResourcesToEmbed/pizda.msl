@@ -1,0 +1,63 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="Хранилище nastybabeModelContainer" CdmEntityContainer="nastybabeEntities">
+    <EntitySetMapping Name="categories">
+      <EntityTypeMapping TypeName="nastybabeModel.categories">
+        <MappingFragment StoreEntitySet="categories">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="category" ColumnName="category" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="nastya">
+      <EntityTypeMapping TypeName="nastybabeModel.nastya">
+        <MappingFragment StoreEntitySet="nastya">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="surname" ColumnName="surname" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="mname" ColumnName="mname" />
+          <ScalarProperty Name="email" ColumnName="email" />
+          <ScalarProperty Name="pass" ColumnName="pass" />
+          <ScalarProperty Name="rolee" ColumnName="rolee" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="roles">
+      <EntityTypeMapping TypeName="nastybabeModel.roles">
+        <MappingFragment StoreEntitySet="roles">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="rolee" ColumnName="rolee" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="sysdiagrams">
+      <EntityTypeMapping TypeName="nastybabeModel.sysdiagrams">
+        <MappingFragment StoreEntitySet="sysdiagrams">
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+          <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+          <ScalarProperty Name="version" ColumnName="version" />
+          <ScalarProperty Name="definition" ColumnName="definition" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tovar">
+      <EntityTypeMapping TypeName="nastybabeModel.tovar">
+        <MappingFragment StoreEntitySet="tovar">
+          <ScalarProperty Name="art" ColumnName="art" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="ed_ism" ColumnName="ed_ism" />
+          <ScalarProperty Name="price" ColumnName="price" />
+          <ScalarProperty Name="max_sale" ColumnName="max_sale" />
+          <ScalarProperty Name="proisvod" ColumnName="proisvod" />
+          <ScalarProperty Name="post" ColumnName="post" />
+          <ScalarProperty Name="kat_tov" ColumnName="kat_tov" />
+          <ScalarProperty Name="sale" ColumnName="sale" />
+          <ScalarProperty Name="colvo" ColumnName="colvo" />
+          <ScalarProperty Name="opis" ColumnName="opis" />
+          <ScalarProperty Name="img" ColumnName="img" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>
